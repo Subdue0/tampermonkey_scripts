@@ -12,11 +12,13 @@
 - **桌面端：**
   - [谷歌浏览器](https://www.google.cn/chrome/)
   - [火狐浏览器](http://www.firefox.com.cn/)
-- **移动端：** 用过很多个支持油猴的浏览器，个人感觉[红叉浏览器(科学上网)](https://play.google.com/store/apps/details?id=com.yandex.browser)的设计，是最为人性化的。
+- **移动端：** 用过很多个支持油猴的浏览器，个人感觉[红叉浏览器(科学上网)](https://play.google.com/store/apps/details?id=com.yandex.browser)的设计，无论是从美感还是拓展功能，又或者是从方便程度上来看，都是非常人性化的。
 ## :heart:使用建议：
-- 移动端，播放视频的时候关闭手机的方向锁定，手机横屏下可以直接免关广告全屏播放视频。
+- 移动端，播放视频的时候关闭手机的方向锁定，手机横屏下可以直接免广告全屏播放视频。
 
-- 移动端可以搭配[User-Agent Switcher(科学上网)](https://chrome.google.com/webstore/detail/user-agent-switcher/clddifkhlkcojbojppdojfeeikdkgiae?hl=zh-CN)使用，开启桌面版网页，效果还可以，就是操作起来比较麻烦，不过可以去除很多视频悬浮广告和大部分APP跳转弹窗，而且就解析范围而言，桌面端支持更好一些。
+- 移动端，如果下载有一些关联的APP，比如：爱奇艺，腾讯视频等，最好删了，因为这样可以防止网页播放视频时直接跳转到APP播放界面。
+
+- 移动端，如果手机设备屏幕比较大，建议搭配[User-Agent Switcher(科学上网)](https://chrome.google.com/webstore/detail/user-agent-switcher/clddifkhlkcojbojppdojfeeikdkgiae?hl=zh-CN)使用，开启桌面版网页，效果不错。屏幕小点也能搭配着使用，就是操作起来稍微麻烦一点，不过可以去除很多视频悬浮广告和大部分APP跳转弹窗，而且就解析范围而言，桌面版网页也会支持更好一些。
 ## :eyes:脚本效果：
 <a href="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" target="_blank"><img width="80%" src="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" ></a><a href="https://i.loli.net/2020/04/21/VUgPnktJhj1B7OC.gif" target="_blank"><img width="20%" src="https://i.loli.net/2020/04/21/VUgPnktJhj1B7OC.gif" ></a>
 ## :mega:接口说明：
