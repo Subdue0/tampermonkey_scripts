@@ -57,8 +57,8 @@
 
 				//排除方向旋转的情况，粗略判断用户正在使用移动设备
 				if (window.screen.width < window.screen.height) {
-					//移动端，点击直接使用默认接口
-					$(top.document.body).on('click', '.h-icon-play', () => {
+					//移动端，双击直接使用默认接口
+					$(top.document.body).on('dblclick', '.h-icon-play', () => {
 						window.open(api[1].url + encodeURI(location.href));
 					});
 
