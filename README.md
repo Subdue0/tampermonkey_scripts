@@ -7,7 +7,7 @@
 ## :book:使用说明：
 - **桌面端：** 鼠标指针悬浮在播放按钮上方，出现菜单，单击直接使用第二接口。鼠标指针离开菜单范围，菜单消失。
 
-- **移动端：** 单击直接使用默认接口，第二接口。长按播放按钮，出现菜单。滑动菜单，菜单消失。
+- **移动端：** 双击直接使用默认接口，第二接口。长按播放按钮，出现菜单。滑动菜单，菜单消失。
 ## :thumbsup:浏览器推荐：
 - **桌面端：**
   - [谷歌浏览器](https://www.google.cn/chrome/)
@@ -18,7 +18,7 @@
 
 - 移动端可以搭配[User-Agent Switcher(科学上网)](https://chrome.google.com/webstore/detail/user-agent-switcher/clddifkhlkcojbojppdojfeeikdkgiae?hl=zh-CN)使用，开启桌面版网页，效果还可以，就是操作起来比较麻烦，不过可以去除很多视频悬浮广告和大部分APP跳转弹窗，而且就解析范围而言，桌面端支持更好一些。
 ## :eyes:脚本效果：
-<a href="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" target="_blank"><img width="80%" src="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" ></a><a href="https://i.loli.net/2020/04/17/LtUojqYBC26iuZh.gif" target="_blank"><img width="20%" src="https://i.loli.net/2020/04/17/LtUojqYBC26iuZh.gif" ></a>
+<a href="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" target="_blank"><img width="80%" src="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" ></a><a href="https://i.loli.net/2020/04/17/LtUojqYBC26iuZh.gif" target="_blank"><img width="20%" src="https://i.loli.net/2020/04/21/VUgPnktJhj1B7OC.gif" ></a>
 ## :mega:接口说明：
 谁都懂接口在精不在多，失效后，有时间就更新。
 ## :question:常见问题：
