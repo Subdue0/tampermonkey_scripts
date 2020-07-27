@@ -33,67 +33,160 @@
 // @grant			GM_addStyle
 // ==/UserScript==
 
+
 (function () {
 	'use strict';
+	/* eslint-disable no-undef */
 
-	GM_addStyle('.h-div {color: #d926b5; fill: #d926b5; width:88px; height:136px; position: fixed; z-index: 99999; top: 300px; right: 0;}  .h-ol {position: fixed; top: 300px; right: 0; z-index: 99999; counter-reset: li; list-style: none; font-size: 14px; padding: 0; text-shadow: 0 1px 0 rgba(255, 255, 255, .5); display: none;}  .h-ol a {position: relative; display: block; padding: 3px 10px 3px 22px; margin: 1em 0; background: #ddd; color: #444; text-decoration: none; border-radius: 0.3em; transition: all 0.3s ease-out; cursor: pointer;}  .h-ol a:hover {background: #eee; color: #ff6f5c; transition: all 0.3s ease-out;}  .h-ol a::before {content: counter(li); counter-increment: li; position: absolute; left: -1.2em; top: 50%; margin-top: -1.2em; background: #87ceeb; height: 2em; width: 2em; line-height: 2em; border: 0.2em solid #fff; text-align: center; font-weight: bold; border-radius: 2em;}');
 
+	//移动端，默认解析api接口
+	let default_api = 'https://jiexi.380k.com/?url=';
+
+	//可自行增减解析api接口
 	let api = [
-		{name: '腾讯专用', url: 'http://jx.618ge.com/?url='},
-		{name: '全网通用', url: 'https://jiexi.380k.com/?url='},
-		{name: '奇艺专用', url: 'https://api.52wyb.com/webcloud/?v='}];
+		{name: '七彩解析', url: 'https://v.7cyd.com/vip/?url='},
+		{name: '黑云解析', url: 'https://jiexi.380k.com/?url='},
+		{name: '618G解析', url: 'http://jx.618ge.com/?url='},
+        {name: '美茜儿解析', url: 'https://www.meixier.cn/?url='},
+	];
+
+
+	GM_addStyle(`
+        * {
+            margin:0;
+            padding:0
+        }
+
+        #container #icon-play {
+            position: fixed;
+            top: 50%;
+            right: 3%;
+            z-index: 999;
+            transform: translateY(-50%);
+            min-width: 40px;
+            min-height: 46px;
+        }
+
+        #container #icon-play #triangle-right {
+            position: absolute;
+            border-left: 40px solid skyblue;
+            border-top: 23px solid transparent;
+            border-bottom: 23px solid transparent;
+        }
+
+        #container #api-list {
+            display: none;
+            position: fixed;
+            top: 50%;
+            right: 0;
+            z-index: 9999;
+            transform: translateY(-50%);
+        }
+
+        #container #api-list ol {
+            counter-reset: li;
+            list-style: none;
+            font-size: 14px;
+        }
+
+        #container #api-list a {
+            display: block;
+            position: relative;
+            margin: 1em 0;
+            padding: 5px 15px 5px 25px;
+            background: #ddd;
+            color: #444;
+            border-radius: 0 1em 1em 0;
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        #container #api-list a:hover {
+            background: #eee;
+            color: #ff6f5c;
+            transition: all 0.3s ease-out;
+        }
+
+        #container #api-list a::before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            left: -1.2em;
+            top: 50%;
+            margin-top: -1.2em;
+            background: skyblue;
+            width: 2em;
+            height: 2em;
+            line-height: 2em;
+            border-radius: 2em;
+            border: 0.2em solid #fff;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: -1px -1px white;
+        }
+	`);
 
 
 	let main = {
 		showButton: function () {
 			if (location.host.match(/youku|iqiyi|le|qq|mgtv|sohu|tudou|acfun|bilibili|pptv|1905/ig)) {
-				let mainActivity = '<div class="h-div"><ol class="h-ol"></ol><svg viewBox="0 0 88 136"><path class="h-icon-play" d="M63,68.5L26,90V47Z"></path></svg></div>';
+				let mainActivity = `
+					<div id="container">
+						<div id="icon-play">
+							<i id="triangle-right"></i>
+						</div>
+						<div id="api-list">
+							<ol></ol>
+						</div>
+					</div>
+				`;
 
 				$(top.document.body).append(mainActivity);
 
 				api.forEach((val, index) => {
-					$('.h-ol').append(`<li><a title="点击使用该接口解析VIP视频" target="_blank" onclick="this.href='${val.url}' + encodeURI(location.href)">${val.name}</a></li>`)
+					$('#container #api-list ol').append(`<li><a title="点击使用该接口解析VIP视频" target="_blank" onclick="this.href='${val.url}' + encodeURI(window.location.href)">${val.name}</a></li>`)
 				});
 
 				//排除方向旋转的情况，粗略判断用户正在使用移动设备
 				if (window.screen.width < window.screen.height) {
 					//移动端，双击直接使用默认接口
-					$(top.document.body).on('dblclick', '.h-icon-play', () => {
-						window.open(api[1].url + encodeURI(location.href));
+					$(top.document.body).on('dblclick', '#container #icon-play', () => {
+						window.open(default_api + encodeURI(window.location.href));
 					});
 
 					//移动端，长按1s播放按钮，弹出解析菜单
-					var timeout;
-					$(top.document.body).on('touchstart', '.h-icon-play', () => {
+					let timeout;
+					$(top.document.body).on('touchstart', '#container #icon-play', () => {
 						timeout = setTimeout(function() {
-							$('.h-icon-play').fadeOut('fast');
-							$('.h-ol').fadeIn('slow');
+							$('#container #icon-play').fadeOut('fast');
+							$('#container #api-list').fadeIn('slow');
 						}, 1000);
 					});
-					$(top.document.body).on('touchend', '.h-icon-play', () => {
+					$(top.document.body).on('touchend', '#container #icon-play', () => {
 						clearTimeout(timeout);
 					});
-					$(top.document.body).on('touchmove', '.h-icon-play', () => {
+					$(top.document.body).on('touchmove', '#container #icon-play', () => {
 						clearTimeout(timeout);
 					});
 
 					//移动端，滑动菜单，菜单消失
-					$(top.document.body).on('touchmove', '.h-ol', () => {
-						$('.h-ol').fadeOut('fast');
-						$('.h-icon-play').fadeIn('slow');
+					$(top.document.body).on('touchmove', '#container #api-list ol', () => {
+						$('#container #api-list').fadeOut('fast');
+						$('#container #icon-play').fadeIn('slow');
 					});
-				}
-				else {
+				} else {
 					//PC端，鼠标在播放按钮上方悬浮，弹出菜单
-					$(top.document.body).on('mouseenter', '.h-icon-play', () => {
-						$('.h-icon-play').fadeOut('fast');
-						$('.h-ol').fadeIn('slow');
+					$(top.document.body).on('mouseenter', '#container #icon-play', () => {
+						$('#container #icon-play').fadeOut('fast');
+						$('#container #api-list').fadeIn('slow');
 					});
 
 					//PC端，鼠标划出菜单，菜单消失
-					$(top.document.body).on('mouseleave', '.h-ol', () => {
-						$('.h-ol').fadeOut("fast");
-						$('.h-icon-play').fadeIn("slow");
+					$(top.document.body).on('mouseleave', '#container #api-list ol', () => {
+						$('#container #api-list').fadeOut("fast");
+						$('#container #icon-play').fadeIn("slow");
 					});
 				}
 			}
