@@ -22,7 +22,7 @@
 ## :eyes:脚本效果：
 <a href="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" target="_blank"><img width="80%" src="https://i.loli.net/2020/04/17/Vbahknp3i6MtDBN.gif" ></a><a href="https://i.loli.net/2020/04/21/VUgPnktJhj1B7OC.gif" target="_blank"><img width="20%" src="https://i.loli.net/2020/04/21/VUgPnktJhj1B7OC.gif" ></a>
 ## :mega:接口说明：
-谁都懂接口在精不在多，失效后，有时间就更新。
+解析接口失效后，有时间就更新。
 ## :question:常见问题：
 **Q:移动端的腾讯视频播放图标无法加载？**
 
