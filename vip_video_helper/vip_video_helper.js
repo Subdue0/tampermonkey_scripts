@@ -57,9 +57,9 @@
         {name: 'bl解析', url: 'https://vip.bljiex.cc/?v='},
         {name: 'h8解析', url: 'https://www.h8jx.com/jiexi.php?url='},
         {name: 'TV解析', url: 'https://jx.m3u8.tv/jiexi/?url='},
-		{name: 'Mao解析', url: 'https://www.mtosz.com/m3u8.php?url='},
+        {name: 'Mao解析', url: 'https://www.mtosz.com/m3u8.php?url='},
         {name: '虾米解析', url: 'https://jx.xmflv.com/?url='},
-		{name: '夜幕解析', url: 'https://www.yemu.xyz/?url='},
+        {name: '夜幕解析', url: 'https://www.yemu.xyz/?url='},
     ];
 
 
