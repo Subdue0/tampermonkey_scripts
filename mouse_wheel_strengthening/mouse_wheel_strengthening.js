@@ -13,11 +13,12 @@
 // @grant            unsafeWindow
 // @grant            GM_addStyle
 // ==/UserScript==
+/* jshint esversion: 6 */
+/* eslint-disable no-undef */
 
 
 (function () {
     'use strict';
-    /* eslint-disable no-undef */
 
 
 
@@ -31,7 +32,6 @@
     var j = 0;
     // 视频初始变量
     var videoWidth, videoHeight, parentWidth, parentHeight = 0;
-
     // 工具方法
     var utils = {
         // 获取父元素层级
@@ -124,16 +124,16 @@
             if (queryResult.length === 0) {
                 return;
             } else {
-                var mutedFlag = false;
+                var pausedFlag = false;
                 for (var k=0; k<queryResult.length; k++)
                 {
-                    if (queryResult[k].muted === false) {
-                        mutedFlag = true;
+                    if (queryResult[k].paused === false) {
+                        pausedFlag = true;
                         videoTag = queryResult[k];
                         break;
                     }
                 }
-                if (!mutedFlag) {
+                if (!pausedFlag) {
                     videoTag = queryResult[0];
                 }
             }
@@ -158,7 +158,7 @@
         // 如果使用默认参数：false，则只是阻止冒泡阶段事件的向上传播，而捕获阶段的事件早已触发，会造成目标内层事件触发
         // 简而言之，由外而内—捕获阶段、目标阶段、由内而外—冒泡阶段，事件得从捕获阶段开始阻止传播，这样可以避免事件往内层渗透、往外层冒泡
         videoTopBox.addEventListener("mousewheel", handleMouseWheel, true);
-    };
+    }
     $(function() {
         // 监听全屏事件
         document.addEventListener("fullscreenchange", main);
